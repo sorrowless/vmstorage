@@ -17,10 +17,7 @@
           image: "{{ vmstorage_docker_image }}"
           container_name: "{{ vmstorage_container_name }}"
           command: "{{ vmstorage_command }}"
-          ports:
-            - "{{ vmstorage_address }}:8482:8482"
-            - "{{ vmstorage_address }}:8400:8400"
-            - "{{ vmstorage_address }}:8401:8401"
+          ports: "{{ vmstorage_ports }}"
           volumes:
             - "{{ vmstorage_storage_dir }}:/storage"
           hostname: "{{ vmstorage_container_name }}"
@@ -76,8 +73,7 @@
               vmstorage:
                 image: "{{ vmstorage_docker_image }}"
                 command: "{{ vmstorage_command }}"
-                ports:
-                  - "8482:8482"
+                ports: "{{ vmstorage_ports }}"
                 volumes:
                   - "{{ vmstorage_storage_dir }}:/storage"
                 hostname: "{{ vmstorage_container_name }}"
